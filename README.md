@@ -1,2 +1,2 @@
 # TRECVID2019-INS
-whu nercms trecvid2019  ins task
+whu nercms trecvid2019 ins task project
