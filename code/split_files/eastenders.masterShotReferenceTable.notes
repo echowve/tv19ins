@@ -1,0 +1,13 @@
+The EastEnders master shot reference table contains the official
+definition of shot boundaries for use in TRECVID.  Each line contain
+the following:
+
+ FileID from the collection file, which maps the ID to a file name
+ | Shot ID (including the file ID followed by the shot number within the file)
+ | |             First time in the shot (mp7 format)
+ | |             |                Last time in the shot 
+ | |             |                |
+ 0 shot0_1       T00:00:00:00F25  T00:00:00:02F25
+
+NOTE that in the eastenders.collection.xml file, file with ID == 0,
+has its use designated as "sample"; it is NOT part of the test data.
