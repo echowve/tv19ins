@@ -1,8 +1,10 @@
 import os
+import cv2
 
 pwd = os.getcwd()
 print("current work root path is {}".format(pwd))
 ffmpeg_file  = 'ffmpeg-20190325-c3b517d-win64-static'
+fps = 25
 
 
 
@@ -41,6 +43,94 @@ def clip_video(clip_file=None):
             if len(line)>2:
                 lines.append(line)
         return lines
+
+
+def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
+
+
+    cur_video = clip_file_cur_video[0][0]
+
+    real_video = dict[int(cur_video)]
+    cap = cv2.VideoCapture(os.path.join(video_dir, real_video))
+    geshi = '.avi'
+
+    size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+
+    last_frame = 0
+
+
+
+
+
+    for line in clip_file_cur_video:
+
+        shot = line[1]
+
+        outfile = shot + geshi
+
+
+        begin_time = line[2][1:-3]
+        begin_time = begin_time.split(':')
+        begin_time_int = int(begin_time[0])*3600 + int(begin_time[1])*60 + int(begin_time[2])
+
+
+        end_time = line[3][1:-4]
+        end_time = end_time.split(':')
+
+        end_time_int = int(end_time[0])*3600 + int(end_time[1])*60 + int(end_time[2])
+
+        begin_frame = begin_time_int * fps + int(begin_time[3])
+
+        if begin_frame == 0:
+            begin_frame = 1
+
+        end_frame = end_time_int * fps + int(end_time[3])
+
+        num = end_frame - begin_frame + 1
+
+
+
+        outdir = os.path.join(shot_out, cur_video)
+        outdir = os.path.join(outdir, shot)
+        os.makedirs(outdir, exist_ok=True)
+
+        outfile = os.path.join(outdir, outfile)
+        writer = cv2.VideoWriter(outfile, cv2.VideoWriter_fourcc('M','J','P','G'), fps, size)
+
+        if last_frame != begin_frame -1:
+            raise(ValueError)
+
+
+        while(num):
+
+            ret, fr = cap.read()
+
+            writer.write(fr)
+            num  = num -1
+
+            last_frame = last_frame + 1
+
+        writer.release()
+        print("the file {} has done".format(outfile))
+
+
+    cap.release()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def split_video(lines_index=None, video_in=None, shot_out=None):
@@ -106,7 +196,22 @@ lines = clip_video(clip_file=clip_file)
 #     for i in lines:
 #         f.write(str(i))
 #         f.write('\n')
-split_video(lines_index=lines, video_in = video_dir, shot_out=shot_save_dir)
+# split_video(lines_index=lines, video_in = video_dir, shot_out=shot_save_dir)
+
+
+for video_index in range(0, 243):
+
+    video_index = str(video_index)
+
+    list = []
+    [list.append(i) for i in lines if i[0]==video_index]
+
+    split_video_v2(list, dict=map_dict, fps=None, shot_out=shot_save_dir)
+
+    print("the video: {} has done".format(video_index))
+
+
+
 
 
 

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4736565b-2604-414e-ac6b-3b2d1da560d6" name="Default" comment="" />
+    <list default="true" id="4736565b-2604-414e-ac6b-3b2d1da560d6" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parseshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/parseshot.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +19,38 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parseshot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="99">
+              <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../reid/anaconda3/envs/python36/lib/python3.6/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="308" selection-start-line="308" selection-end-line="308" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19278">
+              <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -23,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/test.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="731">
-              <caret line="43" column="189" lean-forward="true" selection-start-line="43" selection-start-column="189" selection-end-line="43" selection-end-column="189" />
+              <caret line="43" column="189" selection-start-line="43" selection-start-column="189" selection-end-line="43" selection-end-column="189" />
             </state>
           </provider>
         </entry>
@@ -32,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/split_files/eastenders.masterShotReferenceTable">
           <provider selected="true" editor-type-id="LargeFileEditor">
             <state relative-caret-position="61540">
-              <caret line="3620" column="52" lean-forward="true" selection-start-line="3620" selection-start-column="52" selection-end-line="3620" selection-end-column="52" />
+              <caret line="3620" column="52" selection-start-line="3620" selection-start-column="52" selection-end-line="3620" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -51,6 +87,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -59,11 +98,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
-    <option name="y" value="27" />
-    <option name="width" value="1861" />
-    <option name="height" value="1044" />
+    <option name="x" value="11" />
+    <option name="y" value="202" />
+    <option name="width" value="1853" />
+    <option name="height" value="789" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -89,8 +129,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -133,7 +174,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../../../../reid/anaconda3/envs/pytorch0.2/bin/python3.6" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../../../reid/anaconda3/envs/python36/bin/python3.6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -180,22 +221,30 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="27" width="1861" height="1044" extended-state="0" />
-    <editor active="true" />
+    <frame x="11" y="202" width="1853" height="789" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18127382" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18206671" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32893288" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39933994" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46165645" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39847162" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32969433" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32532752" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -206,36 +255,67 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Program Files/Python35/Lib/os.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        <state relative-caret-position="19278">
+          <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parseshot.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
-          <caret line="43" column="189" lean-forward="true" selection-start-line="43" selection-start-column="189" selection-end-line="43" selection-end-column="189" />
+          <caret line="43" column="189" selection-start-line="43" selection-start-column="189" selection-end-line="43" selection-end-column="189" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/split_files/eastenders.masterShotReferenceTable">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="61540">
-          <caret line="3620" column="52" lean-forward="true" selection-start-line="3620" selection-start-column="52" selection-end-line="3620" selection-end-column="52" />
+          <caret line="3620" column="52" selection-start-line="3620" selection-start-column="52" selection-end-line="3620" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lines.txt">
       <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/451432777/cv2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="10673" column="60" lean-forward="true" selection-start-line="10673" selection-start-column="60" selection-end-line="10673" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../reid/anaconda3/envs/python36/lib/python3.6/site-packages/torch/legacy/nn/Module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1347">
+          <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../reid/anaconda3/envs/python36/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parseshot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
