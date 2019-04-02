@@ -1,5 +1,13 @@
 import os
-import cv2
+#import cv2
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--begin_video', type=int, default = 0)
+parser.add_argument('--end_video', type=int, default = 243)
+
+para = parser.parse_args()
 
 pwd = os.getcwd()
 print("current work root path is {}".format(pwd))
@@ -52,12 +60,12 @@ def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
 
     real_video = dict[int(cur_video)]
     cap = cv2.VideoCapture(os.path.join(video_dir, real_video))
-    geshi = '.avi'
+    geshi = '.mp4'
 
-    size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+    size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))//2, int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))//2)
     fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-    last_frame = 0
+    last_frame = -1
 
 
 
@@ -82,8 +90,8 @@ def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
 
         begin_frame = begin_time_int * fps + int(begin_time[3])
 
-        if begin_frame == 0:
-            begin_frame = 1
+        #if begin_frame == 0:
+            #begin_frame = 1
 
         end_frame = end_time_int * fps + int(end_time[3])
 
@@ -96,7 +104,7 @@ def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
         os.makedirs(outdir, exist_ok=True)
 
         outfile = os.path.join(outdir, outfile)
-        writer = cv2.VideoWriter(outfile, cv2.VideoWriter_fourcc('M','J','P','G'), fps, size)
+        writer = cv2.VideoWriter(outfile, cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), fps, size)
 
         if last_frame != begin_frame -1:
             raise(ValueError)
@@ -105,8 +113,11 @@ def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
         while(num):
 
             ret, fr = cap.read()
+            if ret is True:
+             fr = cv2.resize(fr, size)
+            # cv2.imwrite('ref.jpg', fr)
 
-            writer.write(fr)
+             writer.write(fr)
             num  = num -1
 
             last_frame = last_frame + 1
@@ -116,22 +127,6 @@ def split_video_v2(clip_file_cur_video, dict = dict, fps = None, shot_out=None):
 
 
     cap.release()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def split_video(lines_index=None, video_in=None, shot_out=None):
 
@@ -187,28 +182,29 @@ def split_video(lines_index=None, video_in=None, shot_out=None):
 
 collection = 'split_files/eastenders.collection.xml'
 clip_file = 'split_files/eastenders.masterShotReferenceTable'
-video_dir = r'/home/jlx/trecvid2019/TRECVID/TRECVID2013/original/2013video/video/'
-shot_save_dir = r'/home/jlx/trecvid2019/TRECVID/Dataset'
+video_dir = r'J:\\TRECVID\\TRECVID2013\\original\\2013video\\video\\'
+shot_save_dir = r'H:\\TRECVID2019\\Dataset\\'
 
-map_dict = get_map(collection)
-lines = clip_video(clip_file=clip_file)
-# with open('lines.txt', mode='w') as f:
-#     for i in lines:
-#         f.write(str(i))
-#         f.write('\n')
-# split_video(lines_index=lines, video_in = video_dir, shot_out=shot_save_dir)
+if __name__ == '__main__':
+    map_dict = get_map(collection)
+    lines = clip_video(clip_file=clip_file)
+    # with open('lines.txt', mode='w') as f:
+    #     for i in lines:
+    #         f.write(str(i))
+    #         f.write('\n')
+    # split_video(lines_index=lines, video_in = video_dir, shot_out=shot_save_dir)
 
 
-for video_index in range(0, 243):
+    for video_index in range(para.begin_video, para.end_video+1):
 
-    video_index = str(video_index)
+        video_index = str(video_index)
 
-    list = []
-    [list.append(i) for i in lines if i[0]==video_index]
+        list = []
+        [list.append(i) for i in lines if i[0]==video_index]
 
-    split_video_v2(list, dict=map_dict, fps=None, shot_out=shot_save_dir)
+        split_video_v2(list, dict=map_dict, fps=None, shot_out=shot_save_dir)
 
-    print("the video: {} has done".format(video_index))
+        print("the video: {} has done".format(video_index))
 
 
 
