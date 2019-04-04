@@ -5,7 +5,7 @@ import os
 import math
 import functools
 import copy
-
+import numpy as np
 
 def pil_loader(path):
     # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
@@ -94,9 +94,9 @@ def make_dataset(video_path, sample_duration):
     }
 
     step = sample_duration
-    for i in range(1, (n_frames - sample_duration + 1), step):
+    for i in range(1, n_frames, step):
         sample_i = copy.deepcopy(sample)
-        sample_i['frame_indices'] = list(range(i, i + sample_duration))
+        sample_i['frame_indices'] = list(range(i, min(n_frames + 1, i + sample_duration)))
         # sample_i['segment'] = torch.IntTensor([i, i + sample_duration - 1])
         sample_i['index'] = i // step  # every step frames as a feature
         dataset.append(sample_i)
@@ -105,14 +105,15 @@ def make_dataset(video_path, sample_duration):
 
 
 class Video(data.Dataset):
-    def __init__(self, video_path,
+    def __init__(self, video_dir,
                  spatial_transform=None, temporal_transform=None,
-                 sample_duration=16, get_loader=get_default_video_loader):
-        self.data = make_dataset(video_path, sample_duration)
+                 sample_duration=16, get_loader=get_default_video_loader, video_path=None):
+        self.data = make_dataset(video_dir, sample_duration)
 
         self.spatial_transform = spatial_transform
         self.temporal_transform = temporal_transform
         self.loader = get_loader()
+        self.video_path = video_path
 
     def __getitem__(self, index):
         """
@@ -132,10 +133,10 @@ class Video(data.Dataset):
         clip = torch.stack(clip, 0).permute(1, 0, 2, 3)
         feat_index = self.data[index]['index']
 
-        video_path = self.data[index]['video']
+        video_path = self.video_path
 
         sep = video_path.split(os.path.sep)
-        tmp = video_path.split(sep)[-1]
+        tmp = sep[-1]
         loc = tmp.find('_')
         video = int(tmp[4:loc])
         shot = int(tmp[loc+1:-4])
@@ -150,7 +151,7 @@ class Video(data.Dataset):
 
         # target = self.data[index]['segment']
 
-        return clip, index__
+        return clip, np.array(index__)
         # target
 
     def __len__(self):

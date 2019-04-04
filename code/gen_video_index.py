@@ -1,7 +1,7 @@
 from parseshot import *
-prefix = os.path.join('H:', 'TRECVID2019')
-prefix = os.path.join(prefix, 'Dataset')
-
+#prefix = os.path.join('', 'TRECVID2019')
+#prefix = os.path.join(prefix, 'Dataset')
+prefix = '/home/reid/DATA/Trecvid2019/Dataset'
 map_dict = get_map(collection)
 lines = clip_video(clip_file=clip_file)
 

@@ -2,3 +2,5 @@
 *.out
 *.whl
 *.pth
+*.mat
+*.jpg
