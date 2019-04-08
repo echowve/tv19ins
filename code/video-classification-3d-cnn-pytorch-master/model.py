@@ -112,9 +112,9 @@ def generate_model(opt):
             model = densenet.densenet264(num_classes=opt.n_classes,
                                          sample_size=opt.sample_size, sample_duration=opt.sample_duration,
                                          last_fc=last_fc)
-
-    if not opt.no_cuda:
-        model = model.cuda()
-        model = nn.DataParallel(model, device_ids=[1])
+    #
+    # if not opt.no_cuda:
+    #     model = model.cuda()
+    #     model = nn.DataParallel(model, device_ids=[1])
 
     return model

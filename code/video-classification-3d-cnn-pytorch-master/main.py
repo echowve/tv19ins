@@ -26,6 +26,10 @@ if __name__=="__main__":
     opt.mode = 'feature'
     opt.video_index_dir = 'video_index'
     model = generate_model(opt)
+
+    model = model.cuda()
+    model = nn.DataParallel(model, device_ids=[1])
+
     print('loading model {}'.format(opt.model))
     model_data = torch.load(opt.model)
     assert opt.arch == model_data['arch']
@@ -61,19 +65,20 @@ if __name__=="__main__":
 
             for input_file in input_files:
                 video_path = input_file[0:-1]
-                # video_path = '/home/reid/DATA/Trecvid2019/Dataset/0/shot0_615/shot0_615.mp4'
+                # video_path = '/home/reid/DATA/Trecvid2019/Dataset/138/shot138_1983/shot138_1983.mp4'
                 if os.path.exists(video_path):
                     print(video_path)
                     subprocess.call('mkdir tmp', shell=True)
                     subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
                                     shell=True)
+                    if len(os.listdir('tmp')) > 0:
 
-                    result = classify_video_trecvid('tmp', model, opt, video_path)
-                    if flag == 0:
-                        outputs = result
-                        flag = 1
-                    else:
-                        outputs = np.vstack((outputs, result))
+                        result = classify_video_trecvid('tmp', model, opt, video_path)
+                        if flag == 0:
+                            outputs = result
+                            flag = 1
+                        else:
+                            outputs = np.vstack((outputs, result))
 
 
                     subprocess.call('rm -rf tmp', shell=True)
