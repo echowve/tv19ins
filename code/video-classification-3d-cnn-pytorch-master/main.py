@@ -57,39 +57,79 @@ if __name__=="__main__":
 
 
 
-    for video_id in range(opt.begin_video, opt.end_video+1):
+    # for video_id in range(opt.begin_video, opt.end_video+1):
+    #
+    #     outputs = []
+    #     flag = 0
+    #     with open(os.path.join(opt.video_index_dir, str(video_id)+'.txt')) as input_files:
+    #
+    #         for input_file in input_files:
+    #             video_path = input_file[0:-1]
+    #             # video_path = '/home/reid/DATA/Trecvid2019/Dataset/138/shot138_1983/shot138_1983.mp4'
+    #             if os.path.exists(video_path):
+    #                 print(video_path)
+    #                 subprocess.call('mkdir tmp', shell=True)
+    #                 subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
+    #                                 shell=True)
+    #                 if len(os.listdir('tmp')) > 0:
+    #
+    #                     result = classify_video_trecvid('tmp', model, opt, video_path)
+    #                     if flag == 0:
+    #                         outputs = result
+    #                         flag = 1
+    #                     else:
+    #                         outputs = np.vstack((outputs, result))
+    #
+    #
+    #                 subprocess.call('rm -rf tmp', shell=True)
+    #
+    #             else:
+    #                 print('{} does not exist'.format(input_file))
+    #
+    #     if os.path.exists('tmp'):
+    #         subprocess.call('rm -rf tmp', shell=True)
+    #
+    #     os.makedirs('result', exist_ok=True)
+    #     sio.savemat(os.path.join('result', str(video_id)), {'feat': outputs})
+    # with open(opt.output, 'w') as f:
+    #     json.dump(outputs, f)
+
+
+    probe_video_dir = '/home/reid/DATA/Trecvid2019/probe_video/'
+    video_list = os.listdir(probe_video_dir)
+    for video_id in video_list:
 
         outputs = []
         flag = 0
-        with open(os.path.join(opt.video_index_dir, str(video_id)+'.txt')) as input_files:
-
-            for input_file in input_files:
-                video_path = input_file[0:-1]
-                # video_path = '/home/reid/DATA/Trecvid2019/Dataset/138/shot138_1983/shot138_1983.mp4'
-                if os.path.exists(video_path):
-                    print(video_path)
-                    subprocess.call('mkdir tmp', shell=True)
-                    subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
-                                    shell=True)
-                    if len(os.listdir('tmp')) > 0:
-
-                        result = classify_video_trecvid('tmp', model, opt, video_path)
-                        if flag == 0:
-                            outputs = result
-                            flag = 1
-                        else:
-                            outputs = np.vstack((outputs, result))
+        videos = os.path.join(probe_video_dir, video_id)
+        input_files = os.listdir(videos)
 
 
-                    subprocess.call('rm -rf tmp', shell=True)
+        for input_file in input_files:
+            video_path = os.path.join(videos, input_file)
+            # video_path = '/home/reid/DATA/Trecvid2019/Dataset/138/shot138_1983/shot138_1983.mp4'
+            if os.path.exists(video_path):
+                print(video_path)
+                subprocess.call('mkdir tmp', shell=True)
+                subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
+                                shell=True)
+                if len(os.listdir('tmp')) > 0:
 
-                else:
-                    print('{} does not exist'.format(input_file))
+                    result = classify_video_trecvid('tmp', model, opt, video_path)
+                    if flag == 0:
+                        outputs = result
+                        flag = 1
+                    else:
+                        outputs = np.vstack((outputs, result))
+
+
+                subprocess.call('rm -rf tmp', shell=True)
+
+            else:
+                print('{} does not exist'.format(input_file))
 
         if os.path.exists('tmp'):
             subprocess.call('rm -rf tmp', shell=True)
 
-        os.makedirs('result', exist_ok=True)
-        sio.savemat(os.path.join('result', str(video_id)), {'feat': outputs})
-    # with open(opt.output, 'w') as f:
-    #     json.dump(outputs, f)
+        os.makedirs('result_probe', exist_ok=True)
+        sio.savemat(os.path.join('result_probe', str(video_id)), {'feat': outputs})

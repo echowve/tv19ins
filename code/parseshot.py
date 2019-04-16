@@ -202,7 +202,7 @@ if __name__ == '__main__':
         list = []
         [list.append(i) for i in lines if i[0]==video_index]
 
-        split_video_v2(list, dict=map_dict, fps=None, shot_out=shot_save_dir)
+        # split_video_v2(list, dict=map_dict, fps=None, shot_out=shot_save_dir)
 
         print("the video: {} has done".format(video_index))
 
