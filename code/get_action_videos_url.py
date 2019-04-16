@@ -1,6 +1,6 @@
 # coding: utf-8
-# you can use this script to generate urls of all topic action videos
-# the you can download them with uget software on ubuntu
+# you can use this script to generate urls of all topic action videos,
+# then you can download them with uget software on ubuntu
 
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
